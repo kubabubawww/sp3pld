@@ -21,6 +21,9 @@ assets/js/components.js  pasek stacji, menu i stopka (wspólne dla wszystkich st
 assets/js/pogoda.js      wyszukiwarka miejscowości → przestawia mapę Windy (geokoder Open-Meteo)
 assets/js/main.js        pasek stacji (ticker, zegar UTC, status), A−/A+, kontrast, galeria
 assets/img/              zdjęcia (archiwum starej strony), logotypy PZK / ŚDK / herb Gminy
+sitemap.xml              mapa strony dla wyszukiwarek
+robots.txt               reguły dla robotów + adres mapy strony
+_redirects               przekierowania Netlify (bez www → www, stare adresy)
 ```
 
 `_zrodla/` — materiały źródłowe (kopia starej strony, logotypy PZK, pliki od klubu). Nie jest publikowany (`.gitignore`).
@@ -114,7 +117,14 @@ Nie wpisuj pełnych adresów także w plikach `.md` — GitHub Pages serwuje je 
 
 ## Publikacja
 
+- PROD: **https://www.sp3pld.e7.pl/** — Netlify, wdrożenie z gałęzi `main` (katalog główny).
 - DEV: GitHub Pages (gałąź `main`, katalog główny; plik `.nojekyll`).
-- PROD: po decyzji o domenie — plik `CNAME` + rekordy DNS.
+
+### Wyszukiwarki
+
+- Adres kanoniczny to wersja z **www** — każda strona ma `<link rel="canonical">` i `og:url` z pełnym adresem, a `_redirects` przekierowuje `sp3pld.e7.pl` (bez www) na `www.sp3pld.e7.pl`.
+- Nowa podstrona = dopisz ją do `sitemap.xml` (i ustaw jej `canonical` / `og:url`). Przy większej zmianie treści zaktualizuj `<lastmod>` danej strony.
+- Stare adresy poprzedniej strony (`/osi-gni-cia`, `/sp3pld`, `/nasze-karty-qsl`, …) przekierowują 301 na nowe podstrony — reguły w `_redirects`.
+- Ponowne indeksowanie: Google Search Console → właściwość `https://www.sp3pld.e7.pl/` → **Mapy witryn**: `sitemap.xml`, a dla najważniejszych stron **Sprawdzenie adresu URL → Poproś o zindeksowanie**.
 
 Created by [kubabuba.pl](https://kubabuba.pl)

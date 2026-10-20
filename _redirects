@@ -1,0 +1,13 @@
+# Przekierowania Netlify (pierwsza pasująca reguła wygrywa)
+
+# Adres kanoniczny strony: https://www.sp3pld.e7.pl/
+https://sp3pld.e7.pl/*  https://www.sp3pld.e7.pl/:splat  301!
+http://sp3pld.e7.pl/*   https://www.sp3pld.e7.pl/:splat  301!
+
+# Adresy poprzedniej strony klubu
+/osi-gni-cia            /osiagniecia.html   301
+/sp3pld                 /o-klubie.html      301
+/nasze-karty-qsl        /o-klubie.html      301
+/otrzymane-karty-qsl    /galeria.html       301
+/linkownia-pogoda       /linki.html         301
+/jajecznica             /aktualnosci.html   301

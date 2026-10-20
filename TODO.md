@@ -1,7 +1,7 @@
 # TODO — SP3PLD
 
 ## Do ustalenia z klubem
-- [ ] Domena docelowa (sp3pld.e7.pl zostaje? nowa sp3pld.pl / .org.pl?) → `CNAME`, `sitemap.xml`, absolutne `og:image`
+- [x] Domena docelowa: **www.sp3pld.e7.pl** (Netlify) — `sitemap.xml`, `canonical`, absolutne `og:image` (20.10.2026)
 - [x] E-mail klubu: **sp3pld (małpa) vp.pl**, opiekun klubu SP3IBM: sp3ibm (małpa) vp.pl (od Kuby, 14.10.2026) — na stronie Kontakt, w stopce i polityce prywatności (ukryte przed robotami)
 - [ ] Adres korespondencyjny ze strony OT 32 (skr. poczt. 30, ul. Piłsudskiego 21) — czy aktualny i czy podawać na stronie? Na OT 32 jest też stary e-mail sp3pld (małpa) e7.pl — warto poprosić OT 32 o aktualizację
 - [ ] Administrator danych do polityki prywatności
@@ -18,7 +18,8 @@
 
 ## Techniczne
 - [ ] Repozytorium GitHub + włączenie GitHub Pages
-- [ ] `sitemap.xml` po ustaleniu domeny
-- [ ] Przekierowania ze starych adresów (/osi-gni-cia, /sp3pld, /nasze-karty-qsl, /otrzymane-karty-qsl, /linkownia-pogoda, /jajecznica) — po przeniesieniu domeny
+- [x] `sitemap.xml` + `Sitemap:` w `robots.txt`
+- [x] Przekierowania ze starych adresów (/osi-gni-cia, /sp3pld, /nasze-karty-qsl, /otrzymane-karty-qsl, /linkownia-pogoda, /jajecznica) — `_redirects`
+- [ ] Google Search Console: właściwość www.sp3pld.e7.pl, zgłoszenie `sitemap.xml`, prośba o zindeksowanie strony głównej
 - [ ] Lighthouse ≥ 90
 - [ ] Ewentualnie kompresja/WebP zdjęć galerii

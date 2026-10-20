@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://www.sp3pld.e7.pl/sitemap.xml
