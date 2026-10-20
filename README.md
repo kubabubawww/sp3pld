@@ -125,6 +125,7 @@ Nie wpisuj pełnych adresów także w plikach `.md` — GitHub Pages serwuje je 
 - Adres kanoniczny to wersja z **www** — każda strona ma `<link rel="canonical">` i `og:url` z pełnym adresem, a `_redirects` przekierowuje `sp3pld.e7.pl` (bez www) na `www.sp3pld.e7.pl`.
 - Nowa podstrona = dopisz ją do `sitemap.xml` (i ustaw jej `canonical` / `og:url`). Przy większej zmianie treści zaktualizuj `<lastmod>` danej strony.
 - Stare adresy poprzedniej strony (`/osi-gni-cia`, `/sp3pld`, `/nasze-karty-qsl`, …) przekierowują 301 na nowe podstrony — reguły w `_redirects`.
+- Google Search Console: usługa „Prefiks URL” `https://www.sp3pld.e7.pl/`, weryfikowana metatagiem `google-site-verification` w `index.html` — **nie usuwaj go** (Google okresowo sprawdza weryfikację).
 - Ponowne indeksowanie: Google Search Console → właściwość `https://www.sp3pld.e7.pl/` → **Mapy witryn**: `sitemap.xml`, a dla najważniejszych stron **Sprawdzenie adresu URL → Poproś o zindeksowanie**.
 
 Created by [kubabuba.pl](https://kubabuba.pl)
