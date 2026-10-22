@@ -17,9 +17,10 @@
 
   function show(r) {
     const lat = r.latitude.toFixed(3), lon = r.longitude.toFixed(3);
-    const url = new URL(map.src);
+    const url = new URL(map.dataset.src || map.src); // mapa mogła się jeszcze nie wczytać (data-src)
     ['lat', 'detailLat'].forEach(k => url.searchParams.set(k, lat));
     ['lon', 'detailLon'].forEach(k => url.searchParams.set(k, lon));
+    delete map.dataset.src;
     map.src = url.toString();
     if (open) open.href = `https://www.windy.com/${lat}/${lon}?${lat},${lon},8`;
     const where = label(r);

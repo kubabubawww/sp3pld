@@ -54,6 +54,19 @@
     if (!a.hasAttribute('data-keep-text')) a.textContent = addr;
   });
 
+  // Ramki z zewnętrznymi mapami (Google, Windy) — <iframe data-src>: wczytywane dopiero, gdy są ok. 200 px od ekranu.
+  // Natywne loading="lazy" na wolnym łączu wczytuje je z dużym wyprzedzeniem, co spowalniało start strony.
+  const lazyFrames = document.querySelectorAll('iframe[data-src]');
+  const loadFrame = f => { if (f.dataset.src) { f.src = f.dataset.src; delete f.dataset.src; } };
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => entries.forEach(e => {
+      if (e.isIntersecting) { loadFrame(e.target); io.unobserve(e.target); }
+    }), { rootMargin: '200px 0px' });
+    lazyFrames.forEach(f => io.observe(f));
+  } else {
+    lazyFrames.forEach(loadFrame);
+  }
+
   // Menu mobilne
   const btn = document.querySelector('.nav-toggle');
   const nav = document.getElementById('nav');
