@@ -64,14 +64,14 @@
           </div>
         </div>
         <div>
-          <h4>Strona</h4>
+          <h2>Strona</h2>
           <ul>${NAV.map(([, href, label]) => `<li><a href="${href}">${label}</a></li>`).join('')}
             <li><a href="linki.html">Linkownia</a></li>
             <li><a href="pogoda.html">Pogoda i propagacja</a></li>
           </ul>
         </div>
         <div>
-          <h4>Współpraca</h4>
+          <h2>Współpraca</h2>
           <ul>
             <li><a href="https://pzk.org.pl" target="_blank" rel="noopener">Polski Związek Krótkofalowców</a></li>
             <li><a href="https://ot32.pzk.org.pl/" target="_blank" rel="noopener">OT 32 PZK Zielona Góra</a></li>
@@ -80,7 +80,7 @@
           </ul>
         </div>
         <div>
-          <h4>Kontakt</h4>
+          <h2>Kontakt</h2>
           <ul>
             <li>Świebodziński Dom Kultury<br>ul. Piłsudskiego 39/41<br>66-200 Świebodzin</li>
             <li>Piątek 18:00–20:00</li>

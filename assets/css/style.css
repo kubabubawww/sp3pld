@@ -177,11 +177,12 @@ h3 { font-size: 1.2rem; }
 .page-head { background: var(--band); color: var(--band-ink); padding: 44px 0 40px; position: relative; overflow: hidden; }
 .page-head h1 { font-size: clamp(2rem, 5vw, 3.2rem); margin: 0; }
 .page-head p { margin: 10px 0 0; max-width: 60ch; color: #d6e8e1; }
-.page-head .eyebrow { color: #ffd27a; }
+.page-head .eyebrow { color: #ffe2a6; }
 .page-head::after {
-  content: "SP3PLD"; position: absolute; right: -10px; bottom: -28px; pointer-events: none;
-  font: 800 clamp(5rem, 14vw, 10rem)/1 var(--font); letter-spacing: .04em;
-  color: transparent; -webkit-text-stroke: 2px rgba(255,255,255,.12);
+  /* dekoracyjny konturowy znak w tle — jako obrazek SVG, żeby nie był traktowany jak tekst (kontrast w audytach) */
+  content: ""; position: absolute; right: -10px; bottom: -28px; pointer-events: none;
+  width: clamp(330px, 46vw, 600px); aspect-ratio: 600 / 130;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 130'%3E%3Ctext x='0' y='112' font-family='system-ui,Segoe UI,Arial,sans-serif' font-size='150' font-weight='800' letter-spacing='6' fill='none' stroke='%23ffffff' stroke-opacity='.12' stroke-width='2.5'%3ESP3PLD%3C/text%3E%3C/svg%3E") no-repeat right bottom / contain;
 }
 
 /* ---------- sekcje ---------- */
@@ -375,8 +376,9 @@ tr.placeholder td { color: var(--ink-soft); font-style: italic; }
 .site-footer { background: var(--card); border-top: 4px solid var(--band); color: var(--ink-soft); padding: 48px 0 24px; font-size: .92rem; }
 .site-footer a { color: var(--ink); text-decoration: none; }
 .site-footer a:hover { color: var(--stamp); text-decoration: underline; }
+.footer-bottom a { text-decoration: underline; text-underline-offset: 3px; }
 .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 32px; }
-.footer-grid h4 { color: var(--ink); font: 700 .78rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; margin: 0 0 14px; }
+.footer-grid h2 { color: var(--ink); font: 700 .78rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; margin: 0 0 14px; }
 .footer-grid ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
 .footer-call { font: 800 1.3rem/1 var(--font); letter-spacing: .04em; background: var(--band); color: var(--band-ink); padding: 6px 9px 5px; border-radius: 3px; display: inline-block; margin-bottom: 12px; }
 .footer-logos { display: flex; align-items: center; gap: 18px; margin-top: 16px; flex-wrap: wrap; }

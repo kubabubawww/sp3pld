@@ -54,11 +54,6 @@
     if (!a.hasAttribute('data-keep-text')) a.textContent = addr;
   });
 
-  // Obrazki z danymi na żywo (np. propagacja HamQSL): parametr godzinowy omija starą kopię w pamięci przeglądarki
-  document.querySelectorAll('img[data-live]').forEach(img => {
-    img.src += (img.src.includes('?') ? '&' : '?') + 'h=' + Math.floor(Date.now() / 36e5);
-  });
-
   // Menu mobilne
   const btn = document.querySelector('.nav-toggle');
   const nav = document.getElementById('nav');

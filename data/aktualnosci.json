@@ -1,6 +1,24 @@
 {
   "wpisy": [
     {
+      "id": "dxcc-160-6m-2026",
+      "data": "2026-02",
+      "dataTekst": "luty 2026",
+      "tytul": "Dyplomy DXCC na 160 m i 6 m",
+      "zajawka": "Dwa kolejne wyróżnienia ARRL: DXCC za potwierdzenie co najmniej 100 podmiotów na 160 m (Top Band) i 6 m (Magic Band).",
+      "tresc": [
+        "Kolejne dwa wyróżnienia dla naszego klubu przyznane przez ARRL za potwierdzenie minimum 100 podmiotów w pasmach **160 m (Top Band)** oraz **6 m (Magic Band)**. Są to dwa najtrudniejsze i najbardziej elitarne pasma ze wszystkich pasm HF.",
+        "Dyplomy DX Century Club zostały wystawione 27 listopada 2025 r. (160 m — nr 4 080, 6 m — nr 2 655). Do klubu dotarły na początku lutego 2026 r."
+      ],
+      "zdjecie": { "plik": "2026-dxcc-160-6m/1.jpg", "opis": "Dyplom ARRL DX Century Club 160 Meters dla Klubu Krótkofalowców SP3PLD, nr 4080, 27 listopada 2025" },
+      "galeria": [
+        { "plik": "2026-dxcc-160-6m/2.jpg", "opis": "Dyplom ARRL DX Century Club 6 Meters dla Klubu Krótkofalowców SP3PLD, nr 2655, 27 listopada 2025" }
+      ],
+      "linki": [
+        { "tekst": "Statystyki DXCC i WAZ klubu", "url": "osiagniecia.html" }
+      ]
+    },
+    {
       "id": "wwa-2026",
       "data": "2026-02-08",
       "tytul": "WWA 2026 — SP3PLD najlepszą polską stacją klubową",

@@ -10,6 +10,17 @@
   const src = p => /^(https?:)?\/\//.test(p) || p.startsWith('assets/') ? p : IMG_DIR + p;
   const isExternal = u => /^(https?:)?\/\//.test(u);
 
+  // Na Netlify (www.sp3pld.e7.pl) zdjęcia w kartach i miniaturach idą przez Netlify Image CDN:
+  // zmniejszone do potrzebnej szerokości i w formacie WebP/AVIF. Po kliknięciu (podgląd) — oryginał.
+  // Lokalnie i na innych hostingach — zawsze oryginał.
+  const ON_NETLIFY = /(^|\.)sp3pld\.e7\.pl$|\.netlify\.app$/.test(location.hostname);
+  const sized = (p, w) => {
+    const u = src(p);
+    if (!ON_NETLIFY || isExternal(u) || /\.(svg|gif)$/i.test(u)) return u;
+    const path = new URL(u, location.origin + '/').pathname; // rozwija ../ w ścieżce
+    return '/.netlify/images?url=' + encodeURIComponent(path) + '&w=' + w;
+  };
+
   // zastępcza grafika dla wpisu bez zdjęcia — zielony pas z napisem SP3PLD
   const PLACEHOLDER = '<div class="log-ph" aria-hidden="true">SP3PLD</div>';
 
@@ -33,22 +44,23 @@
     return w.data ? `<time datetime="${esc(w.data)}">${esc(txt)}</time>` : `<time>${esc(txt)}</time>`;
   }
 
-  const photo = (z, lazy = true) => {
+  // w × h — szerokość obrazka do pobrania i proporcje z CSS (4:3 we wpisie, 16:10 w karcie)
+  const photo = (z, w, h, lazy = true) => {
     if (!z) return '';
     const o = typeof z === 'string' ? { plik: z } : z;
-    return `<img src="${esc(src(o.plik))}" alt="${esc(o.opis || '')}"${lazy ? ' loading="lazy"' : ''}>`;
+    return `<img src="${esc(sized(o.plik, w))}" alt="${esc(o.opis || '')}" width="${w}" height="${h}"${lazy ? ' loading="lazy"' : ''}>`;
   };
 
-  function post(w) {
+  function post(w, i) {
     const gal = (w.galeria || []).map((g, i) => {
       const o = typeof g === 'string' ? { plik: g } : g;
       const alt = o.opis || `${w.tytul} — zdjęcie ${i + 1}`;
-      return `<a href="${esc(src(o.plik))}"><img src="${esc(src(o.plik))}" alt="${esc(alt)}" loading="lazy"></a>`;
+      return `<a href="${esc(src(o.plik))}"><img src="${esc(sized(o.plik, 240))}" alt="${esc(alt)}" width="240" height="240" loading="lazy"></a>`;
     }).join('');
     const links = (w.linki || []).map(l =>
       `<p><a href="${esc(l.url)}"${isExternal(l.url) ? ' target="_blank" rel="noopener"' : ''}>${esc(l.tekst || l.url)} →</a></p>`).join('');
     const main = w.zdjecie
-      ? `<div class="post-photo" data-lightbox><a href="${esc(src(w.zdjecie.plik || w.zdjecie))}">${photo(w.zdjecie)}</a></div>`
+      ? `<div class="post-photo" data-lightbox><a href="${esc(src(w.zdjecie.plik || w.zdjecie))}">${photo(w.zdjecie, 640, 480, i > 0)}</a></div>`
       : PLACEHOLDER;
     const cls = ['post', w.wspomnienie && 'memoriam'].filter(Boolean).join(' ');
     return `<article class="${cls}"${w.id ? ` id="${esc(w.id)}"` : ''}>
@@ -68,7 +80,7 @@
     const lead = w.zajawka || (w.tresc || []).find(p => typeof p === 'string') || '';
     const href = 'aktualnosci.html' + (w.id ? '#' + encodeURIComponent(w.id) : '');
     return `<li>
-      ${w.zdjecie ? photo(w.zdjecie) : PLACEHOLDER}
+      ${w.zdjecie ? photo(w.zdjecie, 800, 500) : PLACEHOLDER}
       <div class="body">
         ${dateHtml(w)}
         <h3>${esc(w.tytul)}</h3>
@@ -87,7 +99,7 @@
     .then(d => {
       const wpisy = (d.wpisy || []).filter(w => !w.ukryty);
       if (list) {
-        list.innerHTML = wpisy.length ? wpisy.map(post).join('') : '<p class="note">Brak wpisów.</p>';
+        list.innerHTML = wpisy.length ? wpisy.map((w, i) => post(w, i)).join('') : '<p class="note">Brak wpisów.</p>';
         // przewiń do wpisu z adresu (#id), bo treść doszła po załadowaniu strony
         if (location.hash) {
           const el = document.getElementById(decodeURIComponent(location.hash.slice(1)));

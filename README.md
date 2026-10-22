@@ -78,6 +78,8 @@ Wpisy wyświetlają się w kolejności z pliku — **nowy wpis dodaj na górze**
 
 **Zdjęcia:** wrzuć pliki do `assets/img/aktualnosci/` — najlepiej w podfolderze wpisu, np. `assets/img/aktualnosci/2026-spotkanie/1.jpg` — i w JSON-ie podaj ścieżkę od tego folderu (`"2026-spotkanie/1.jpg"`). Można też podać pełny adres `https://...`. Zalecany rozmiar: ok. 1600 px dłuższy bok, JPG, do ~400 KB.
 
+**Wydajność:** na produkcji (Netlify, `www.sp3pld.e7.pl`) zdjęcia w kartach i miniaturach są automatycznie zmniejszane i konwertowane do WebP/AVIF przez **Netlify Image CDN** (`/.netlify/images?url=…&w=…`, kod w `assets/js/aktualnosci.js` → `sized()`). Po kliknięciu otwiera się oryginał. Lokalnie i na innych hostingach zawsze używany jest oryginał. Wystarczy więc wrzucać zdjęcia do ok. 1600 px — bez ręcznego robienia miniatur.
+
 ### `data/osiagniecia.json`
 
 - `stanNa` — data zestawienia (RRRR-MM-DD), wyświetlana nad tabelami,
