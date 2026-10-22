@@ -279,6 +279,7 @@ h3 { font-size: 1.2rem; }
 .lb-close { top: 12px; right: 12px; }
 .lb-prev { left: 12px; top: 50%; transform: translateY(-50%); }
 .lb-next { right: 12px; top: 50%; transform: translateY(-50%); }
+.lightbox.single .lb-prev, .lightbox.single .lb-next, .lightbox.single .lb-count { display: none; }
 .lb-count { position: absolute; bottom: 14px; left: 0; right: 0; text-align: center; color: #cfd8d3; font: .85rem var(--mono); }
 
 /* Tabele (osiągnięcia, członkowie) */

@@ -51,6 +51,7 @@
     return `<img src="${esc(sized(o.plik, w))}" alt="${esc(o.opis || '')}" width="${w}" height="${h}"${lazy ? ' loading="lazy"' : ''}>`;
   };
 
+  // cały wpis to jedna grupa podglądu: zdjęcie główne + galeria (strzałki przechodzą między nimi)
   function post(w, i) {
     const gal = (w.galeria || []).map((g, i) => {
       const o = typeof g === 'string' ? { plik: g } : g;
@@ -60,10 +61,10 @@
     const links = (w.linki || []).map(l =>
       `<p><a href="${esc(l.url)}"${isExternal(l.url) ? ' target="_blank" rel="noopener"' : ''}>${esc(l.tekst || l.url)} →</a></p>`).join('');
     const main = w.zdjecie
-      ? `<div class="post-photo" data-lightbox><a href="${esc(src(w.zdjecie.plik || w.zdjecie))}">${photo(w.zdjecie, 640, 480, i > 0)}</a></div>`
+      ? `<div class="post-photo"><a href="${esc(src(w.zdjecie.plik || w.zdjecie))}">${photo(w.zdjecie, 640, 480, i > 0)}</a></div>`
       : PLACEHOLDER;
     const cls = ['post', w.wspomnienie && 'memoriam'].filter(Boolean).join(' ');
-    return `<article class="${cls}"${w.id ? ` id="${esc(w.id)}"` : ''}>
+    return `<article class="${cls}"${w.id ? ` id="${esc(w.id)}"` : ''} data-lightbox>
       ${main}
       <div>
         ${dateHtml(w)}
@@ -71,7 +72,7 @@
         ${(w.tresc || []).map(block).join('')}
         ${links}
         ${w.autor ? `<p class="by">${rich(w.autor)}</p>` : ''}
-        ${gal ? `<div class="thumbs" data-lightbox>${gal}</div>` : ''}
+        ${gal ? `<div class="thumbs">${gal}</div>` : ''}
       </div>
     </article>`;
   }

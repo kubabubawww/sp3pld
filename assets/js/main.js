@@ -106,13 +106,15 @@
     });
   }));
 
-  // Lightbox — linki do zdjęć w kontenerach [data-lightbox], także dodanych później (np. z JSON)
+  // Lightbox — linki ze zdjęciem (<a><img></a>) w kontenerach [data-lightbox], także dodanych później (np. z JSON).
+  // Zwykłe linki tekstowe w tym samym kontenerze (np. „Statystyki DXCC”) działają normalnie.
   let lb = null, lbImg, lbCount, items = [], idx = 0, opener = null;
   const lbShow = () => {
     const a = items[idx];
     lbImg.src = a.href;
     lbImg.alt = (a.querySelector('img') || {}).alt || '';
     lbCount.textContent = (idx + 1) + ' / ' + items.length;
+    lb.classList.toggle('single', items.length < 2); // bez strzałek, gdy jest jedno zdjęcie
   };
   const lbClose = () => { lb.classList.remove('open'); lbImg.src = ''; if (opener) opener.focus(); };
   const lbStep = d => { idx = (idx + d + items.length) % items.length; lbShow(); };
@@ -134,10 +136,10 @@
   }
   document.addEventListener('click', e => {
     const a = e.target.closest('[data-lightbox] a');
-    if (!a || e.ctrlKey || e.metaKey || e.shiftKey) return;
+    if (!a || !a.querySelector('img') || e.ctrlKey || e.metaKey || e.shiftKey) return;
     e.preventDefault();
     if (!lb) lbCreate();
-    items = [...a.closest('[data-lightbox]').querySelectorAll('a')].filter(x => !x.hidden);
+    items = [...a.closest('[data-lightbox]').querySelectorAll('a')].filter(x => !x.hidden && x.querySelector('img'));
     idx = items.indexOf(a); opener = a;
     lbShow(); lb.classList.add('open');
     lb.querySelector('.lb-close').focus();
