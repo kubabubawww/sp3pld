@@ -1,7 +1,11 @@
-/* Lista członków i Silent Keys ładowana z data/czlonkowie.json.
+/* Lista członków i Silent Keys ładowana z data/czlonkowie.json — wyświetlana alfabetycznie po znaku.
    Wpis z "przyklad": true jest wyświetlany kursywą (wiersz zastępczy). */
 (function () {
   const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+  // Sortowanie alfabetyczne po znaku (główny znak, bez części „ex …”); kolejność w pliku nie ma znaczenia.
+  const callKey = r => String(r.znak || '').split(/\s+ex\s+/i)[0].trim().toUpperCase();
+  const byCall = (a, b) => callKey(a).localeCompare(callKey(b), 'pl', { numeric: true });
 
   function fill(id, rows, cols, empty) {
     const tbody = document.querySelector(`#${id} tbody`);
@@ -10,7 +14,7 @@
       tbody.innerHTML = `<tr><td colspan="${cols.length}">${empty}</td></tr>`;
       return;
     }
-    tbody.innerHTML = rows.map(r =>
+    tbody.innerHTML = rows.slice().sort(byCall).map(r =>
       `<tr${r.przyklad ? ' class="placeholder"' : ''}>` +
       cols.map(c => c === 'znak'
         ? `<td class="call">${esc(r.znak)}${id === 'silent-keys' ? ' sk' : ''}</td>`
