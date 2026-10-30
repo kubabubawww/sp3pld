@@ -102,7 +102,7 @@ Wpisy wyświetlają się w kolejności z pliku — **nowy wpis dodaj na górze**
 }
 ```
 
-Obie tabele wyświetlają się **alfabetycznie po znaku** (liczy się główny znak, bez części „ex …”), więc nowego członka można dopisać w dowolnym miejscu pliku; przy Silent Keys dopisywane jest „sk”. Pusta tablica `silentKeys` ukrywa całą sekcję. Wpisy przykładowe (`"przyklad": true`) usuń po dodaniu prawdziwych. Publikujemy tylko znak, imię i miejscowość — za zgodą członka.
+Obie tabele wyświetlają się **po znaku**: najpierw znaki z 1–2 literami po cyfrze (np. SP3E, SP3SW), potem z trzema (np. SP3DUG), w każdej grupie alfabetycznie (liczy się główny znak, bez części „ex …”), więc nowego członka można dopisać w dowolnym miejscu pliku; przy Silent Keys dopisywane jest „sk”. Pusta tablica `silentKeys` ukrywa całą sekcję. Wpisy przykładowe (`"przyklad": true`) usuń po dodaniu prawdziwych. Publikujemy tylko znak, imię i miejscowość — za zgodą członka.
 
 > Po edycji sprawdź poprawność JSON-a (np. https://jsonlint.com) — jeden brakujący przecinek blokuje wczytanie danych.
 > Podgląd lokalny wymaga serwera (`python -m http.server`), bo przeglądarka nie wczyta JSON-a z `file://`.

@@ -3,9 +3,15 @@
 (function () {
   const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
-  // Sortowanie alfabetyczne po znaku (główny znak, bez części „ex …”); kolejność w pliku nie ma znaczenia.
+  // Sortowanie po znaku (główny znak, bez części „ex …”); kolejność w pliku nie ma znaczenia:
+  // najpierw znaki z 1–2 literami po cyfrze (np. SP3E, SP3SW), potem z 3 i więcej (np. SP3DUG); w grupach alfabetycznie.
   const callKey = r => String(r.znak || '').split(/\s+ex\s+/i)[0].trim().toUpperCase();
-  const byCall = (a, b) => callKey(a).localeCompare(callKey(b), 'pl', { numeric: true });
+  const suffixLen = c => { const m = c.match(/\d([A-Z]+)$/); return m ? m[1].length : 99; };
+  const byCall = (a, b) => {
+    const ka = callKey(a), kb = callKey(b);
+    const ga = suffixLen(ka) <= 2 ? 0 : 1, gb = suffixLen(kb) <= 2 ? 0 : 1;
+    return ga - gb || ka.localeCompare(kb, 'pl', { numeric: true });
+  };
 
   function fill(id, rows, cols, empty) {
     const tbody = document.querySelector(`#${id} tbody`);
