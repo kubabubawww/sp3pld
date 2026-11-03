@@ -1,6 +1,21 @@
 {
   "wpisy": [
     {
+      "id": "dxcc-challenge-2500-2026",
+      "data": "2026-11-03",
+      "tytul": "DXCC Challenge: 2500 punktów i „deska” od OT 32 PZK",
+      "zajawka": "Plakieta ARRL DXCC Challenge z naklejką 2500 już w klubie. Następny cel: 3000 punktów.",
+      "tresc": [
+        "Mamy w ARRL DXCC Challenge **2500 punktów** i „deskę” ufundowaną przez OT 32 PZK. Na „deskę” trochę czekaliśmy, bo w ARRL wyczerpały się zapasy i trzeba było poczekać na nową dostawę.",
+        "Nie zasypiamy jednak gruszek w popiele i zdobywamy kolejne punkty. Idzie to coraz trudniej, a do kolejnej okrągłej liczby — **3000 punktów** — jeszcze dużo brakuje. Do zaliczenia pozostają coraz trudniejsze podmioty na coraz bardziej wymagających pasmach."
+      ],
+      "autor": "opracował Czesław SP3IBM",
+      "zdjecie": { "plik": "2026-dxcc-challenge/1.jpg", "opis": "Plakieta ARRL DXCC Challenge dla Klubu Krótkofalowców SP3PLD z 27 listopada 2025 — naklejki 1000, 1500, 2000 i 2500" },
+      "linki": [
+        { "tekst": "Statystyki DXCC i WAZ klubu", "url": "osiagniecia.html" }
+      ]
+    },
+    {
       "id": "dxcc-160-6m-2026",
       "data": "2026-02",
       "dataTekst": "luty 2026",
@@ -10,6 +25,7 @@
         "Kolejne dwa wyróżnienia dla naszego klubu przyznane przez ARRL za potwierdzenie minimum 100 podmiotów w pasmach **160 m (Top Band)** oraz **6 m (Magic Band)**. Są to dwa najtrudniejsze i najbardziej elitarne pasma ze wszystkich pasm HF.",
         "Dyplomy DX Century Club zostały wystawione 27 listopada 2025 r. (160 m — nr 4 080, 6 m — nr 2 655). Do klubu dotarły na początku lutego 2026 r."
       ],
+      "autor": "opracował Czesław SP3IBM",
       "zdjecie": { "plik": "2026-dxcc-160-6m/1.jpg", "opis": "Dyplom ARRL DX Century Club 160 Meters dla Klubu Krótkofalowców SP3PLD, nr 4080, 27 listopada 2025" },
       "galeria": [
         { "plik": "2026-dxcc-160-6m/2.jpg", "opis": "Dyplom ARRL DX Century Club 6 Meters dla Klubu Krótkofalowców SP3PLD, nr 2655, 27 listopada 2025" }
