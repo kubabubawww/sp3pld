@@ -1,6 +1,19 @@
 {
   "wpisy": [
     {
+      "id": "prace-antenowe-2026",
+      "data": "2026-10-01",
+      "tytul": "Ostatnie prace antenowe w tym roku?",
+      "zajawka": "Słoneczny początek jesieni wyciągnął nas jeszcze raz na dach domu kultury, do anten klubu.",
+      "tresc": [
+        "Początek jesieni rozpieszczał nas słońcem, więc wykorzystaliśmy jedno z ostatnich ciepłych popołudni i jeszcze raz weszliśmy na dach Świebodzińskiego Domu Kultury, gdzie stoją anteny klubu.",
+        "Czy to były ostatnie prace antenowe w tym roku? Zobaczymy. Im bliżej zimy, tym mniej chętnie wychodzi się na dach, ale anteny lubią mieć własne zdanie — zwłaszcza po pierwszej jesiennej wichurze.",
+        "Na zdjęciu: Kuba SP3FCK i Czesław SP3IBM."
+      ],
+      "autor": "opracował Kuba SP3FCK · fot. Zdzisław SP3DUG",
+      "zdjecie": { "plik": "2026-prace-antenowe/1.jpg", "opis": "Kuba SP3FCK (z lewej) i Czesław SP3IBM przy aluminiowych drabinach na dachu Świebodzińskiego Domu Kultury, 1 października 2026" }
+    },
+    {
       "id": "dxcc-challenge-2500-2026",
       "data": "2026-07",
       "dataTekst": "lipiec 2026",
